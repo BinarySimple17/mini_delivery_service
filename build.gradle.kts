@@ -47,6 +47,12 @@ dependencies {
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.0")
 }
 
+tasks.register("printVersion") {
+    doLast {
+        println(project.version)
+    }
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
