@@ -75,15 +75,19 @@ public class DeliveryServiceImpl implements DeliveryService {
         newDelivery.setOrderId(order.getId());
         
         //todo REST запрос во внешнюю службу доставки и оттуда цена, срок и т.д.
-        //через webhook? наверно внешняя служба обновляет статус доставки здесь
+        //через webhook? наверно внешняя служба обновляет статус доставки потом
         
         newDelivery.setPrice(order.getTotalCost().multiply(BigDecimal.valueOf(0.1)));
         newDelivery.setStatus(CREATED);
-
-        Random random = new Random();
-        if (random.nextBoolean()) {
+        //todo для эмуляции успешного или провального запроса доставки привяжусь к стоимости доставки
+        // если она <= 0,02 то провал
+        if (newDelivery.getPrice().compareTo(BigDecimal.valueOf(0.002)) < 1){
             newDelivery.setStatus(Delivery.Status.FAILED);
         }
+//        Random random = new Random();
+//        if (random.nextBoolean()) {
+//            newDelivery.setStatus(Delivery.Status.FAILED);
+//        }
         newDelivery.setExpiresAt(LocalDateTime.now().plusDays(3));
         newDelivery.setUsername(order.getUsername());
 
