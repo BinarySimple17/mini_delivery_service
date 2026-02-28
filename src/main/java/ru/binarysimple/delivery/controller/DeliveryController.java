@@ -1,6 +1,5 @@
-package ru.binarysimple.delivery;
+package ru.binarysimple.delivery.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
@@ -10,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.binarysimple.delivery.dto.DeliveryFullDto;
 import ru.binarysimple.delivery.filter.DeliveryFilter;
 import ru.binarysimple.delivery.service.DeliveryService;
-
-import java.io.IOException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/delivery")
